@@ -398,20 +398,20 @@ Extended features for v0.2+.
 ### Phase 0 (Foundation)
 
 **Project Setup**
-- [ ] Initialize `composer.json` with PSR-4 `Stanbic\SDK\*` namespace
-- [ ] Add dev dependencies: PHPUnit, Psalm, PHPCS, symfony/var-dumper, PSR-18 HTTP client stubs
-- [ ] Create directory structure: `src/Domain`, `src/Application`, `src/Infrastructure`, `tests`, `examples`, `docs`
-- [ ] Add `.gitignore` (vendor, build, IDE)
-- [ ] Create `.editorconfig` for consistent formatting
+- [x] Initialize `composer.json` with PSR-4 `Stanbic\SDK\*` namespace
+- [x] Add dev dependencies: PHPUnit, Psalm, PHPCS, symfony/var-dumper, PSR-18 HTTP client stubs
+- [x] Create directory structure: `src/Domain`, `src/Application`, `src/Infrastructure`, `tests`, `examples`, `docs`
+- [x] Add `.gitignore` (vendor, build, IDE)
+- [x] Create `.editorconfig` for consistent formatting
 
 **CI/CD**
-- [ ] Create `.github/workflows/test.yml` (lint, test, coverage)
-- [ ] Set up Psalm configuration (`psalm.xml`)
-- [ ] Configure PHPCS (PSR-12 standard)
-- [ ] Create `phpstan.neon.dist` (optional, level 9)
+- [x] Create `.github/workflows/test.yml` (lint, test, coverage)
+- [x] Set up Psalm configuration (`psalm.xml`)
+- [x] Configure PHPCS (PSR-12 standard)
+- [x] Create `phpstan.neon.dist` (optional, level 9)
 
 **Documentation**
-- [ ] Create `docs/api-endpoints.md` with 20 API catalog
+- [x] Create `docs/api-endpoints.md` with 20 API catalog
 - [ ] Create `docs/design-patterns.md` with pattern rationale
 - [ ] Create `CHANGELOG.md` (v0.1.0 skeleton)
 - [ ] Update `README.md` with all sections from this template
