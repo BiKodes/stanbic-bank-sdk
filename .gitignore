@@ -26,5 +26,15 @@ Homestead.json
 /storage/pail
 .env.backup
 .env.production
-.phpactor.json
+env/
 auth.json
+
+# IDEs and tooling caches
+.idea/
+.vscode/
+.phpactor.json
+.psalm.cache
+/.phpstan.cache
+
+# Build artifacts
+/build/
