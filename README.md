@@ -49,7 +49,7 @@ composer require stanbic/kenya-sdk
 Or clone and install locally:
 
 ```bash
-git clone https://github.com/yourusername/stanbic-bank-sdk.git
+git clone https://github.com/BiKodes/stanbic-bank-sdk.git
 cd stanbic-bank-sdk
 composer install
 ```
@@ -69,7 +69,7 @@ use Stanbic\SDK\Infrastructure\Http\HttpConfig;
 $config = HttpConfig::create(
     clientId: 'your_client_id',
     clientSecret: 'your_client_secret',
-    baseUrl: 'stanbic sandbox base URL',
+    baseUrl: 'Stanbic Sandbox BaseURL',
     timeout: 30,
     retryAttempts: 3,
     retryBackoffMs: 100
@@ -171,7 +171,7 @@ try {
 try {
     $response = $client->notifications()->registerPaymentResultUrl(
         referenceId: 'callback-ref-' . time(),
-        callBackUrl: 'https://yourapp.com/webhook/stanbic',
+        callBackUrl: 'https://stanbic-php-sdk-bikodes.com/webhook/stanbic',
         notificationType: 'CREDIT',
         channel: 'API'
     );
@@ -253,10 +253,10 @@ try {
 use Stanbic\SDK\Infrastructure\Http\HttpConfig;
 
 $config = new HttpConfig(
-    baseUrl: 'https://sandbox.connect.stanbicbank.co.ke/api/sandbox',
+    baseUrl: 'Stanbic Sandbox BaseURL',
     clientId: 'your_client_id',
     clientSecret: 'your_client_secret',
-    tokenUrl: 'https://sandbox.connect.stanbicbank.co.ke/api/sandbox/auth/oauth2/token',
+    tokenUrl: 'Stanbic Sandbox Token URL',
     timeout: 30,                    
     retryAttempts: 3,
     retryBackoffMs: 100,            
