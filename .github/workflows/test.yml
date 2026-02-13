@@ -21,7 +21,7 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
-          coverage: none
+          coverage: pcov
 
       - name: Cache dependencies
         uses: actions/cache@v4
@@ -36,13 +36,11 @@ jobs:
       - name: Validate composer
         run: composer validate --no-check-publish
 
-      - name: Run tests
-        run: composer test
+      - name: Run tests (with coverage)
+        run: composer test -- --coverage-text
 
       - name: Lint (PHPCS)
         run: composer lint
-        continue-on-error: true
 
       - name: Static analysis (Psalm)
         run: composer psalm
-        continue-on-error: true
