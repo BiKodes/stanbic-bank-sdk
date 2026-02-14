@@ -425,28 +425,28 @@ Extended features for v0.2+.
 ### Phase 1 (Domain Layer)
 
 **Exceptions**
-- [ ] Create `src/Domain/Exception/StanbicException.php` (base)
-- [ ] Implement 10+ typed exception subclasses:
-  - [ ] `UnauthorizedException` (401)
-  - [ ] `InvalidRequestException` (400)
-  - [ ] `ForbiddenException` (403)
-  - [ ] `NotFoundException` (404)
-  - [ ] `ConflictException` (409)
-  - [ ] `ServerErrorException` (5xx)
-  - [ ] `TimeoutException`
-  - [ ] `InsufficientFundsException`
-  - [ ] `DuplicateTransactionException`
-  - [ ] `InvalidAccountException`
-  - [ ] `NetworkException`
-- [ ] Create `src/Domain/Exception/ApiErrorMapping.php` (error code → exception mapper)
+- [x] Create `src/Domain/Exception/StanbicException.php` (base)
+- [x] Implement 10+ typed exception subclasses:
+  - [x] `UnauthorizedException` (401)
+  - [x] `InvalidRequestException` (400)
+  - [x] `ForbiddenException` (403)
+  - [x] `NotFoundException` (404)
+  - [x] `ConflictException` (409)
+  - [x] `ServerErrorException` (5xx)
+  - [x] `TimeoutException`
+  - [x] `InsufficientFundsException`
+  - [x] `DuplicateTransactionException`
+  - [x] `InvalidAccountException`
+  - [x] `NetworkException`
+- [x] Create `src/Domain/Exception/ApiErrorMapping.php` (error code → exception mapper)
 
 **Service Interfaces**
-- [ ] Define `src/Domain/Service/AccountServiceInterface.php`
-- [ ] Define `src/Domain/Service/PaymentServiceInterface.php`
-- [ ] Define `src/Domain/Service/TransferServiceInterface.php`
-- [ ] Define `src/Domain/Service/CardServiceInterface.php`
-- [ ] Define `src/Domain/Service/NotificationServiceInterface.php`
-- [ ] Define `src/Domain/Service/UtilityServiceInterface.php`
+- [x] Define `src/Domain/Service/AccountServiceInterface.php`
+- [x] Define `src/Domain/Service/PaymentServiceInterface.php`
+- [x] Define `src/Domain/Service/TransferServiceInterface.php`
+- [x] Define `src/Domain/Service/CardServiceInterface.php`
+- [x] Define `src/Domain/Service/NotificationServiceInterface.php`
+- [x] Define `src/Domain/Service/UtilityServiceInterface.php`
 
 **DTOs – Accounts**
 - [ ] Create `src/Domain/Account/BalanceResponse.php`
