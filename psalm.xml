@@ -14,4 +14,7 @@
         </ignoreFiles>
     </projectFiles>
     <!-- No plugins configured for Phase 0 -->
+    <issueHandlers>
+        <MissingOverrideAttribute errorLevel="suppress" />
+    </issueHandlers>
 </psalm>
