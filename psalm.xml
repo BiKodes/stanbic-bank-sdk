@@ -13,7 +13,5 @@
             <directory name="vendor" />
         </ignoreFiles>
     </projectFiles>
-    <plugins>
-        <pluginClass class="Psalm\Plugin\Composer\ComposerPlugin" />
-    </plugins>
+    <!-- No plugins configured for Phase 0 -->
 </psalm>

@@ -221,16 +221,22 @@ try {
 │      Application Layer (Facade)         │
 │          StanbicClient                  │
 ├─────────────────────────────────────────┤
-│     Application Services Layer           │
-│  (AccountService, PaymentService, ...)   │
+│     Application Services Layer          │
+│  (AccountService, PaymentService, ...)  │
 ├─────────────────────────────────────────┤
-│     Infrastructure Layer                 │
-│  (HTTP, Auth, Serialization, Logging)    │
+│     Infrastructure Layer                │
+│  (HTTP, Auth, Serialization, Logging)   │
 ├─────────────────────────────────────────┤
-│         Domain Layer (Entities)          │
-│   (DTOs, Value Objects, Exceptions)      │
+│         Domain Layer (Entities)         │
+│   (DTOs, Value Objects, Exceptions)     │
 └─────────────────────────────────────────┘
 ```
+
+### Domain-Driven Design (DDD)
+
+The SDK follows Domain-Driven Design principles by centering the model on domain
+concepts (DTOs, value objects, and exceptions) and keeping infrastructure
+concerns (HTTP, auth, serialization) separated from the core domain.
 
 ### Design Patterns Used
 
@@ -412,8 +418,8 @@ Extended features for v0.2+.
 
 **Documentation**
 - [x] Create `docs/api-endpoints.md` with 20 API catalog
-- [ ] Create `docs/design-patterns.md` with pattern rationale
-- [ ] Create `CHANGELOG.md` (v0.1.0 skeleton)
+- [x] Create `docs/design-patterns.md` with pattern rationale
+- [x] Create `CHANGELOG.md` (v0.1.0 skeleton)
 - [ ] Update `README.md` with all sections from this template
 
 ### Phase 1 (Domain Layer)
