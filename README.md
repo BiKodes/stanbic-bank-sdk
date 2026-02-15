@@ -1,5 +1,12 @@
 # Stanbic Bank Kenya PHP SDK
 
+[![CI Status](https://github.com/BiKodes/stanbic-bank-sdk/workflows/CI/badge.svg)](https://github.com/BiKodes/stanbic-bank-sdk/actions)
+[![Coverage Status](https://coveralls.io/repos/github/BiKodes/stanbic-bank-sdk/badge.svg?branch=master)](https://coveralls.io/github/BiKodes/stanbic-bank-sdk?branch=master)
+[![PHP Version](https://img.shields.io/badge/php-%3E%3D8.1-8892BF.svg?logo=php)](https://php.net/)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Psalm Level](https://shepherd.dev/github/BiKodes/stanbic-bank-sdk/level.svg)](https://shepherd.dev/github/BiKodes/stanbic-bank-sdk)
+[![PSR-12](https://img.shields.io/badge/code%20style-PSR--12-blue.svg)](https://www.php-fig.org/psr/psr-12/)
+
 A modern, type-safe PHP SDK for integrating with Stanbic Bank Kenya APIs. Built with PSR standards, OAuth2 authentication, resilient HTTP handling, and clean architecture patterns.
 
 ## Disclaimer
