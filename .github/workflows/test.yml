@@ -37,10 +37,28 @@ jobs:
         run: composer validate --no-check-publish
 
       - name: Run tests (with coverage)
-        run: composer test -- --coverage-text
+        run: composer test -- --coverage-text --coverage-clover=coverage.xml
+
+      - name: Upload coverage to Coveralls
+        uses: coverallsapp/github-action@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          file: coverage.xml
+          flag-name: php-${{ matrix.php }}
+          parallel: true
 
       - name: Lint (PHPCS)
         run: composer lint
 
       - name: Static analysis (Psalm)
         run: composer psalm
+
+  finish:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Coveralls Finished
+        uses: coverallsapp/github-action@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          parallel-finished: true
