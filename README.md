@@ -245,6 +245,12 @@ The SDK follows Domain-Driven Design principles by centering the model on domain
 concepts (DTOs, value objects, and exceptions) and keeping infrastructure
 concerns (HTTP, auth, serialization) separated from the core domain.
 
+### Value Objects & Helpers
+
+Shared, cross-domain primitives live in [src/Domain/ValueObject](src/Domain/ValueObject). Domain-specific
+helpers stay inside their feature folder (e.g., Payment DTOs in Payment), while reusable
+value objects should be placed in this global location to keep things DRY.
+
 ### Design Patterns Used
 
 | Pattern | Usage | Benefit |
@@ -456,26 +462,26 @@ Extended features for v0.2+.
 - [x] Define `src/Domain/Service/UtilityServiceInterface.php`
 
 **DTOs – Accounts**
-- [ ] Create `src/Domain/Account/BalanceResponse.php`
-- [ ] Create `src/Domain/Account/Transaction.php` (with date, amount, counterparty)
-- [ ] Create `src/Domain/Account/TransactionStatusResponse.php` (with bankStatus, bankReferenceId, transferFee)
-- [ ] Create `src/Domain/Account/StatementRequest.php` (bookingDateGreaterThan, bookingDateLessThan, page)
-- [ ] Create `src/Domain/Account/StatementResponse.php` (totalElements, transaction-items)
+- [x] Create `src/Domain/Account/BalanceResponse.php`
+- [x] Create `src/Domain/Account/Transaction.php` (with date, amount, counterparty)
+- [x] Create `src/Domain/Account/TransactionStatusResponse.php` (with bankStatus, bankReferenceId, transferFee)
+- [x] Create `src/Domain/Account/StatementRequest.php` (bookingDateGreaterThan, bookingDateLessThan, page)
+- [x] Create `src/Domain/Account/StatementResponse.php` (totalElements, transaction-items)
 
 **DTOs – Payments/Transfers**
-- [ ] Create `src/Domain/Payment/PaymentRequest.php` (base abstract)
-- [ ] Create `src/Domain/Payment/PesalinkPaymentRequest.php`
-- [ ] Create `src/Domain/Payment/StanbicPaymentRequest.php`
-- [ ] Create `src/Domain/Payment/InterAccountTransferRequest.php`
-- [ ] Create `src/Domain/Payment/EftTransferRequest.php`
-- [ ] Create `src/Domain/Payment/SwiftTransferRequest.php`
-- [ ] Create `src/Domain/Payment/RtgsTransferRequest.php`
-- [ ] Create `src/Domain/Payment/MobileMoneyRequest.php`
-- [ ] Create `src/Domain/Payment/PaymentResponse.php` (common response)
-- [ ] Create `src/Domain/Payment/TransferTransactionInformation.php`
-- [ ] Create `src/Domain/Payment/CounterpartyAccount.php`
-- [ ] Create `src/Domain/Payment/Counterparty.php`
-- [ ] Create `src/Domain/Payment/RemittanceInformation.php`
+- [x] Create `src/Domain/Payment/PaymentRequest.php` (base abstract)
+- [x] Create `src/Domain/Payment/PesalinkPaymentRequest.php`
+- [x] Create `src/Domain/Payment/StanbicPaymentRequest.php`
+- [x] Create `src/Domain/Payment/InterAccountTransferRequest.php`
+- [x] Create `src/Domain/Payment/EftTransferRequest.php`
+- [x] Create `src/Domain/Payment/SwiftTransferRequest.php`
+- [x] Create `src/Domain/Payment/RtgsTransferRequest.php`
+- [x] Create `src/Domain/Payment/MobileMoneyRequest.php`
+- [x] Create `src/Domain/Payment/PaymentResponse.php` (common response)
+- [x] Create `src/Domain/Payment/TransferTransactionInformation.php`
+- [x] Create `src/Domain/Payment/CounterpartyAccount.php`
+- [x] Create `src/Domain/Payment/Counterparty.php`
+- [x] Create `src/Domain/Payment/RemittanceInformation.php`
 
 **DTOs – Cards**
 - [ ] Create `src/Domain/Card/CardDetailsRequest.php`

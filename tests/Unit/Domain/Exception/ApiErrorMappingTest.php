@@ -67,4 +67,39 @@ final class ApiErrorMappingTest extends TestCase
         $exception = ApiErrorMapping::fromStatusCode(null, 'unknown');
         $this->assertInstanceOf(StanbicException::class, $exception);
     }
+
+    public function testFromErrorWithNullCodeUsesStatusMapping(): void
+    {
+        $exception = ApiErrorMapping::fromError(null, 'no auth', 401);
+
+        $this->assertInstanceOf(UnauthorizedException::class, $exception);
+        $this->assertSame('no auth', $exception->getMessage());
+    }
+
+    public function testFromErrorWithNullCodeMapsServerError(): void
+    {
+        $exception = ApiErrorMapping::fromError(null, 'boom', 500);
+
+        $this->assertInstanceOf(ServerErrorException::class, $exception);
+        $this->assertSame('boom', $exception->getMessage());
+    }
+
+    public function testFromStatusCodeWithUnmappedClientError(): void
+    {
+        $exception = ApiErrorMapping::fromStatusCode(418, 'teapot');
+
+        $this->assertInstanceOf(StanbicException::class, $exception);
+        $this->assertSame('teapot', $exception->getMessage());
+    }
+
+    public function testPrivateConstructorForCoverage(): void
+    {
+        $reflection = new \ReflectionClass(ApiErrorMapping::class);
+        $constructor = $reflection->getConstructor();
+        $this->assertNotNull($constructor);
+        $constructor->setAccessible(true);
+        $instance = $reflection->newInstanceWithoutConstructor();
+        $constructor->invoke($instance);
+        $this->assertInstanceOf(ApiErrorMapping::class, $instance);
+    }
 }
