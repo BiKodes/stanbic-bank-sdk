@@ -8,7 +8,7 @@ namespace Stanbic\SDK\Domain\Card;
  * Card Details Request.
  *
  * @psalm-immutable
- */
+*/
 final class CardDetailsRequest
 {
     public function __construct(
@@ -21,7 +21,7 @@ final class CardDetailsRequest
 
     /**
      * @param array<string, mixed> $data
-     */
+    */
     public static function fromArray(array $data): self
     {
         /** @var array<string, mixed>|Card|null $cardData */
@@ -58,7 +58,7 @@ final class CardDetailsRequest
 
     /**
      * @return array<string, mixed>
-     */
+    */
     public function toArray(): array
     {
         return [

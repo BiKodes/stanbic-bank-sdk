@@ -8,7 +8,7 @@ namespace Stanbic\SDK\Domain\Card;
  * Interaction value object for card interactions.
  *
  * @psalm-immutable
- */
+*/
 final class Interaction
 {
     public function __construct(
@@ -22,7 +22,7 @@ final class Interaction
 
     /**
      * @param array<string, mixed> $data
-     */
+    */
     public static function fromArray(array $data): self
     {
         /** @var string|null $entersektId */
@@ -47,7 +47,7 @@ final class Interaction
 
     /**
      * @return array<string, mixed>
-     */
+    */
     public function toArray(): array
     {
         $data = [];
