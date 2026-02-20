@@ -8,12 +8,12 @@ namespace Stanbic\SDK\Domain\Card;
  * Card Details Response.
  *
  * @psalm-immutable
- */
+*/
 final class CardDetailsResponse
 {
     /**
      * @param array<string, mixed>|null $result
-     */
+    */
     public function __construct(
         public readonly string $messageID,
         public readonly Interaction $interaction,
@@ -24,7 +24,7 @@ final class CardDetailsResponse
 
     /**
      * @param array<string, mixed> $data
-     */
+    */
     public static function fromArray(array $data): self
     {
         /** @var array<string, mixed>|Interaction|null $interactionData */
@@ -68,7 +68,7 @@ final class CardDetailsResponse
 
     /**
      * @return array<string, mixed>
-     */
+    */
     public function toArray(): array
     {
         $data = [
