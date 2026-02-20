@@ -1,0 +1,17 @@
+
+Deprecated: Composer\Util\ErrorHandler::register(): Implicitly marking parameter $io as nullable is deprecated, the explicit nullable type must be used instead in /usr/share/php/Composer/Util/ErrorHandler.php on line 89
+
+[0;31mERROR[0m: RedundantCondition - ]8;;file:///home/stevo/dev/dmi/stanbic-bank-sdk/tests/Unit/Domain/Card/CustomerCardDetailsRequestTest.php#L130\tests/Unit/Domain/Card/[1;31mCustomerCardDetailsRequestTest.php:130:16[0m]8;;\ - Type array<string, mixed> for $request->card->toarray() is always array<array-key, mixed> (see https://psalm.dev/122)
+        $this->[97;41massertIsArray[0m($request->card->toArray());
+
+
+[0;31mERROR[0m: RedundantCondition - ]8;;file:///home/stevo/dev/dmi/stanbic-bank-sdk/tests/Unit/Domain/Card/CustomerCardDetailsRequestTest.php#L131\tests/Unit/Domain/Card/[1;31mCustomerCardDetailsRequestTest.php:131:16[0m]8;;\ - Type array<string, mixed> for $request->interaction->toarray() is always array<array-key, mixed> (see https://psalm.dev/122)
+        $this->[97;41massertIsArray[0m($request->interaction->toArray());
+
+
+------------------------------
+[0;31m2 errors[0m found
+------------------------------
+
+Checks took 6.03 seconds and used 127.508MB of memory
+Psalm was able to infer types for 99.9324% of the codebase
