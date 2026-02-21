@@ -484,34 +484,34 @@ Extended features for v0.2+.
 - [x] Create `src/Domain/Payment/RemittanceInformation.php`
 
 **DTOs – Cards**
-- [ ] Create `src/Domain/Card/CardDetailsRequest.php`
-- [ ] Create `src/Domain/Card/CardDetailsResponse.php`
-- [ ] Create `src/Domain/Card/CustomerCardDetailsRequest.php`
-- [ ] Create `src/Domain/Card/CustomerCardDetailsResponse.php`
-- [ ] Create `src/Domain/Card/Card.php` (value object)
-- [ ] Create `src/Domain/Card/Interaction.php` (value object)
+- [x] Create `src/Domain/Card/CardDetailsRequest.php`
+- [x] Create `src/Domain/Card/CardDetailsResponse.php`
+- [x] Create `src/Domain/Card/CustomerCardDetailsRequest.php`
+- [x] Create `src/Domain/Card/CustomerCardDetailsResponse.php`
+- [x] Create `src/Domain/Card/Card.php` (value object)
+- [x] Create `src/Domain/Card/Interaction.php` (value object)
 
 **DTOs – Notifications**
-- [ ] Create `src/Domain/Notification/RegisterUrlRequest.php`
-- [ ] Create `src/Domain/Notification/RegisterUrlResponse.php`
-- [ ] Create `src/Domain/Notification/TransactionNotificationRequest.php` (XML support)
-- [ ] Create `src/Domain/Notification/TransactionNotificationResponse.php`
-- [ ] Create `src/Domain/Notification/SmsEmailNotificationRequest.php`
-- [ ] Create `src/Domain/Notification/SmsEmailNotificationResponse.php`
+- [x] Create `src/Domain/Notification/RegisterUrlRequest.php`
+- [x] Create `src/Domain/Notification/RegisterUrlResponse.php`
+- [x] Create `src/Domain/Notification/TransactionNotificationRequest.php` (XML support)
+- [x] Create `src/Domain/Notification/TransactionNotificationResponse.php`
+- [x] Create `src/Domain/Notification/SmsEmailNotificationRequest.php`
+- [x] Create `src/Domain/Notification/SmsEmailNotificationResponse.php`
 
 **DTOs – Utilities**
-- [ ] Create `src/Domain/Utility/SortCodeRequest.php`
-- [ ] Create `src/Domain/Utility/SortCodeResponse.php`
-- [ ] Create `src/Domain/Utility/SwiftCodeRequest.php`
-- [ ] Create `src/Domain/Utility/SwiftCodeResponse.php`
-- [ ] Create `src/Domain/Utility/SwiftBranchResponse.php`
+- [x] Create `src/Domain/Utility/SortCodeRequest.php`
+- [x] Create `src/Domain/Utility/SortCodeResponse.php`
+- [x] Create `src/Domain/Utility/SwiftCodeRequest.php`
+- [x] Create `src/Domain/Utility/SwiftCodeResponse.php`
+- [x] Create `src/Domain/Utility/SwiftBranchResponse.php`
 
 **Value Objects**
-- [ ] Create `src/Domain/Value/Amount.php` (amount, currency)
-- [ ] Create `src/Domain/Value/Currency.php` (enum or string)
-- [ ] Create `src/Domain/Value/Account.php` (account number, bank code)
-- [ ] Create `src/Domain/Value/PostalAddress.php`
-- [ ] Create `src/Domain/Value/ApiError.php` (normalized error)
+- [x] Create `src/Domain/Value/Amount.php` (amount, currency)
+- [x] Create `src/Domain/Value/Currency.php` (enum or string)
+- [x] Create `src/Domain/Value/Account.php` (account number, bank code)
+- [x] Create `src/Domain/Value/PostalAddress.php`
+- [x] Create `src/Domain/Value/ApiError.php` (normalized error)
 
 **Enums**
 - [ ] Create `src/Domain/Enum/BankStatus.php` (PROCESSED, ACCEPTED, REJECTED, etc.)
