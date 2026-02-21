@@ -514,12 +514,12 @@ Extended features for v0.2+.
 - [x] Create `src/Domain/Value/ApiError.php` (normalized error)
 
 **Enums**
-- [ ] Create `src/Domain/Enum/BankStatus.php` (PROCESSED, ACCEPTED, REJECTED, etc.)
-- [ ] Create `src/Domain/Enum/PaymentScheme.php` (PULL_VISA, etc.)
-- [ ] Create `src/Domain/Enum/NotificationType.php` (CREDIT, DEBIT)
-- [ ] Create `src/Domain/Enum/TransactionType.php` (PESALINK, SWIFT, RTGS, EFT)
-- [ ] Create `src/Domain/Enum/SerializationFormat.php` (JSON, XML)
-- [ ] Create `src/Domain/Enum/TransferFrequency.php` (DAILY, WEEKLY, MONTHLY)
+- [x] Create `src/Domain/Enum/BankStatus.php` (PROCESSED, ACCEPTED, REJECTED, etc.)
+- [x] Create `src/Domain/Enum/PaymentScheme.php` (PULL_VISA, etc.)
+- [x] Create `src/Domain/Enum/NotificationType.php` (CREDIT, DEBIT)
+- [x] Create `src/Domain/Enum/TransactionType.php` (PESALINK, SWIFT, RTGS, EFT)
+- [x] Create `src/Domain/Enum/SerializationFormat.php` (JSON, XML)
+- [x] Create `src/Domain/Enum/TransferFrequency.php` (DAILY, WEEKLY, MONTHLY)
 
 **Pagination**
 - [ ] Create `src/Domain/Pagination/Page.php` (from, size)
