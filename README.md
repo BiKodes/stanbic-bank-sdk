@@ -522,9 +522,9 @@ Extended features for v0.2+.
 - [x] Create `src/Domain/Enum/TransferFrequency.php` (DAILY, WEEKLY, MONTHLY)
 
 **Pagination**
-- [ ] Create `src/Domain/Pagination/Page.php` (from, size)
-- [ ] Create `src/Domain/Pagination/PagedResult.php` (totalElements, items)
-- [ ] Create `src/Domain/Pagination/StatementIterator.php` (iterate over transactions)
+- [x] Create `src/Domain/Pagination/Page.php` (from, size)
+- [x] Create `src/Domain/Pagination/PagedResult.php` (totalElements, items)
+- [x] Create `src/Domain/Pagination/StatementIterator.php` (iterate over transactions)
 
 **Tests – Domain**
 - [ ] Create `tests/Unit/Domain/Exception/` tests for all exception types
