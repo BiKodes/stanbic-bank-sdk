@@ -534,8 +534,8 @@ Extended features for v0.2+.
 ### Phase 2 (Infrastructure – HTTP & Auth)
 
 **HTTP Config & Factory**
-- [ ] Create `src/Infrastructure/Http/HttpConfig.php` (immutable configuration)
-- [ ] Create `src/Infrastructure/Http/HttpClientFactory.php` (PSR-18 builder)
+- [x] Create `src/Infrastructure/Http/HttpConfig.php` (immutable configuration)
+- [x] Create `src/Infrastructure/Http/HttpClientFactory.php` (PSR-18 builder)
 
 **OAuth2 Token Provider**
 - [ ] Create `src/Infrastructure/Http/OAuth2TokenProvider.php` (Strategy pattern)
