@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace Stanbic\SDK\Infrastructure\Http;
 
+use Closure;
 use Psr\Http\Client\ClientInterface;
+use Stanbic\SDK\Infrastructure\Http\Middleware\MiddlewareInterface;
+use Stanbic\SDK\Infrastructure\Http\Middleware\MiddlewareStackClient;
 
 /**
  * HTTP Client Factory.
@@ -17,56 +20,49 @@ use Psr\Http\Client\ClientInterface;
 */
 final class HttpClientFactory
 {
-    /**
-     * Class resolver callable.
-     *
-     * Returns true if a given fully-qualified class name is available.
-     *
-     * @var \Closure(string): bool
-    */
-    private \Closure $classExists;
+    private Closure $classExists;
 
     /**
-     * @param (\Closure(string): bool)|null $classExists Optional class resolver for testing.
-     *                                                    Defaults to native class_exists().
+     * @param callable(string): bool|null $classExists Class resolver used for discovery and tests
     */
-    public function __construct(?\Closure $classExists = null)
+    public function __construct(?callable $classExists = null)
     {
-        $this->classExists = $classExists ?? static fn (string $class): bool => class_exists($class);
+        $this->classExists = $classExists !== null
+            ? Closure::fromCallable($classExists)
+            : static fn (string $class): bool => class_exists($class);
     }
 
     /**
-     * Static convenience: create HTTP client from configuration.
-     *
-     * Attempts to auto-discover available PSR-18 client implementations
-     * or uses provided client instance.
+     * Create HTTP client with optional pre-configured client.
      *
      * @param HttpConfig $config HTTP configuration
      * @param ClientInterface|null $client Optional pre-configured PSR-18 client
-     * @return ClientInterface Configured HTTP client
-     * @throws \RuntimeException If no PSR-18 client is available
+     * @return ClientInterface
     */
     public static function create(HttpConfig $config, ?ClientInterface $client = null): ClientInterface
     {
-        if ($client !== null) {
-            return $client;
-        }
-
-        return (new self())->discover();
+        return self::createWithMiddleware($config, [], $client);
     }
 
     /**
-     * Discover available PSR-18 HTTP client.
+     * Create HTTP client with middleware stack.
      *
-     * Checks for common PSR-18 implementations in order of preference:
-     * 1. Guzzle 7+
-     * 2. Symfony HTTP Client
-     * 3. HTTPlug (php-http/curl-client)
-     * 4. PSR-18 Discovery (psr/http-client-implementation)
-     *
-     * @return ClientInterface Discovered HTTP client
-     * @throws \RuntimeException If no PSR-18 client is available
-    */
+     * @param HttpConfig $config HTTP configuration
+     * @param list<MiddlewareInterface> $middleware Middleware stack (outermost first)
+     * @param ClientInterface|null $client Optional pre-configured PSR-18 client
+     * @return ClientInterface
+     */
+    public static function createWithMiddleware(
+        HttpConfig $config,
+        array $middleware,
+        ?ClientInterface $client = null
+    ): ClientInterface {
+        $baseClient = $client ?? (new self())->discover();
+        if (empty($middleware)) {
+            return $baseClient;
+        }
+        return new MiddlewareStackClient($baseClient, $middleware);
+    }
     public function discover(): ClientInterface
     {
         $exists = $this->classExists;
@@ -93,10 +89,13 @@ final class HttpClientFactory
             return $client;
         }
 
-        throw new \RuntimeException(
-            'No PSR-18 HTTP client found. Please install one of: ' .
-            'guzzlehttp/guzzle, symfony/http-client, php-http/curl-client, or psr/http-client-implementation'
-        );
+        $message = implode(' ', [
+            'No PSR-18 HTTP client found. Please install one of:',
+            'guzzlehttp/guzzle, symfony/http-client, php-http/curl-client, or',
+            'psr/http-client-implementation',
+        ]);
+
+        throw new \RuntimeException($message);
     }
 
     /**

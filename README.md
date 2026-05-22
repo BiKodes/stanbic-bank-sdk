@@ -358,14 +358,6 @@ Define all domain objects, value objects, enums, and exceptions.
 - Enums: `BankStatus`, `PaymentScheme`, `NotificationType`, `SerializationFormat`
 - Pagination helpers: `Page` DTO and `StatementIterator`
 
-### Phase 2 (Infrastructure – HTTP & Auth Layer)
-Build resilient PSR-18/PSR-7 HTTP client with OAuth2 and retry logic.
-- `HttpClientFactory`: PSR-18 client builder
-- `OAuth2TokenProvider`: `client_credentials` grant with token caching
-- Middleware stack: `AuthMiddleware`, `RetryMiddleware`, `TimeoutMiddleware`, `RequestIdMiddleware`
-- `ErrorAdapter`: normalize error response formats to `ApiError` DTO
-- Request/response logging via PSR-3
-
 ### Phase 3 (Serialization Layer)
 Support JSON (default) and XML serialization for multi-format APIs.
 - `SerializerInterface` (Strategy): `serialize()`, `deserialize()`
@@ -538,21 +530,21 @@ Extended features for v0.2+.
 - [x] Create `src/Infrastructure/Http/HttpClientFactory.php` (PSR-18 builder)
 
 **OAuth2 Token Provider**
-- [ ] Create `src/Infrastructure/Http/OAuth2TokenProvider.php` (Strategy pattern)
-  - [ ] Implement `client_credentials` grant
-  - [ ] Add token caching (TTL-based)
-  - [ ] Handle token refresh
-  - [ ] Validate token expiration
+- [x] Create `src/Infrastructure/Http/OAuth2TokenProvider.php` (Strategy pattern)
+  - [x] Implement `client_credentials` grant
+  - [x] Add token caching (TTL-based)
+  - [x] Handle token refresh
+  - [x] Validate token expiration
 
 **Middleware Stack**
-- [ ] Create `src/Infrastructure/Http/Middleware/AuthMiddleware.php` (inject Bearer token)
-- [ ] Create `src/Infrastructure/Http/Middleware/RetryMiddleware.php` (exponential backoff)
-  - [ ] Implement retry logic (3 attempts, 100ms base)
-  - [ ] Add jitter to prevent thundering herd
-  - [ ] Skip retries for 4xx (except 408, 429)
-- [ ] Create `src/Infrastructure/Http/Middleware/TimeoutMiddleware.php` (enforce 30s timeout)
-- [ ] Create `src/Infrastructure/Http/Middleware/RequestIdMiddleware.php` (inject X-Request-ID)
-- [ ] Create `src/Infrastructure/Http/Middleware/LoggingMiddleware.php` (PSR-3 logging)
+- [x] Create `src/Infrastructure/Http/Middleware/AuthMiddleware.php` (inject Bearer token)
+- [x] Create `src/Infrastructure/Http/Middleware/RetryMiddleware.php` (exponential backoff)
+  - [x] Implement retry logic (3 attempts, 100ms base)
+  - [x] Add jitter to prevent thundering herd
+  - [x] Skip retries for 4xx (except 408, 429)
+- [x] Create `src/Infrastructure/Http/Middleware/TimeoutMiddleware.php` (enforce 30s timeout)
+- [x] Create `src/Infrastructure/Http/Middleware/RequestIdMiddleware.php` (inject X-Request-ID)
+- [x] Create `src/Infrastructure/Http/Middleware/LoggingMiddleware.php` (PSR-3 logging)
 
 **Error Adapter**
 - [ ] Create `src/Infrastructure/Http/ErrorAdapter.php` (Adapter pattern)
@@ -566,13 +558,13 @@ Extended features for v0.2+.
 **HTTP Client**
 - [ ] Create `src/Infrastructure/Http/HttpClient.php` (request builder)
 - [ ] Integrate all middleware in correct order (logging → timeout → retry → auth)
-- [ ] Add request/response logging
-- [ ] Add PSR-3 logger injection
+- [x] Add request/response logging (via LoggingMiddleware)
+- [x] Add PSR-3 logger injection (supported by LoggingMiddleware)
 
 **Tests – Infrastructure**
-- [ ] Create `tests/Unit/Infrastructure/Http/OAuth2TokenProviderTest.php`
-- [ ] Create `tests/Unit/Infrastructure/Http/AuthMiddlewareTest.php`
-- [ ] Create `tests/Unit/Infrastructure/Http/RetryMiddlewareTest.php`
+- [x] Create `tests/Unit/Infrastructure/Http/OAuth2TokenProviderTest.php`
+- [x] Create `tests/Unit/Infrastructure/Http/AuthMiddlewareTest.php`
+- [x] Create `tests/Unit/Infrastructure/Http/RetryMiddlewareTest.php`
 - [ ] Create `tests/Unit/Infrastructure/Http/ErrorAdapterTest.php` (all 20 error variants)
 - [ ] Create `tests/Unit/Infrastructure/Http/HttpClientTest.php` (middleware stack)
 
