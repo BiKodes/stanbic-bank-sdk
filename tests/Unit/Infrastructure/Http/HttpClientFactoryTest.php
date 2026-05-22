@@ -8,6 +8,8 @@ use PHPUnit\Framework\TestCase;
 use Psr\Http\Client\ClientInterface;
 use Stanbic\SDK\Infrastructure\Http\HttpClientFactory;
 use Stanbic\SDK\Infrastructure\Http\HttpConfig;
+use Stanbic\SDK\Infrastructure\Http\Middleware\MiddlewareInterface;
+use Stanbic\SDK\Infrastructure\Http\Middleware\MiddlewareStackClient;
 
 /**
  * @covers \Stanbic\SDK\Infrastructure\Http\HttpClientFactory
@@ -38,9 +40,9 @@ final class HttpClientFactoryTest extends TestCase
         return static fn (string $class): bool => in_array($class, $available, true);
     }
 
-    // ---------------------------------------------------------------
-    // create() – static convenience
-    // ---------------------------------------------------------------
+     /* ---------------------------------------------------------------
+         create() – static convenience
+     --------------------------------------------------------------- */
 
     public function testCreateReturnsPreconfiguredClient(): void
     {
@@ -56,9 +58,9 @@ final class HttpClientFactoryTest extends TestCase
         self::assertInstanceOf(ClientInterface::class, $client);
     }
 
-    // ---------------------------------------------------------------
-    // discover() – default resolver (real class_exists)
-    // ---------------------------------------------------------------
+     /* ---------------------------------------------------------------
+         discover() – default resolver (real class_exists)
+     --------------------------------------------------------------- */
 
     public function testDiscoverWithDefaultResolverReturnsClient(): void
     {
@@ -67,9 +69,9 @@ final class HttpClientFactoryTest extends TestCase
         self::assertInstanceOf(ClientInterface::class, $factory->discover());
     }
 
-    // ---------------------------------------------------------------
-    // discover() – Guzzle branch
-    // ---------------------------------------------------------------
+     /* ---------------------------------------------------------------
+         discover() – Guzzle branch
+     --------------------------------------------------------------- */
 
     public function testDiscoverReturnsGuzzleWhenAvailable(): void
     {
@@ -94,9 +96,9 @@ final class HttpClientFactoryTest extends TestCase
         self::assertInstanceOf(\GuzzleHttp\Client::class, $factory->discover());
     }
 
-    // ---------------------------------------------------------------
-    // discover() – Symfony branch
-    // ---------------------------------------------------------------
+     /* ---------------------------------------------------------------
+         discover() – Symfony branch
+     --------------------------------------------------------------- */
 
     public function testDiscoverReturnsSymfonyWhenGuzzleUnavailable(): void
     {
@@ -113,9 +115,9 @@ final class HttpClientFactoryTest extends TestCase
         self::assertInstanceOf(ClientInterface::class, $client);
     }
 
-    // ---------------------------------------------------------------
-    // discover() – Curl branch
-    // ---------------------------------------------------------------
+     /* ---------------------------------------------------------------
+         discover() – Curl branch
+     --------------------------------------------------------------- */
 
     public function testDiscoverReturnsCurlWhenGuzzleAndSymfonyUnavailable(): void
     {
@@ -132,9 +134,9 @@ final class HttpClientFactoryTest extends TestCase
         self::assertInstanceOf(ClientInterface::class, $client);
     }
 
-    // ---------------------------------------------------------------
-    // discover() – PSR-18 Discovery branch
-    // ---------------------------------------------------------------
+     /* ---------------------------------------------------------------
+         discover() – PSR-18 Discovery branch
+     --------------------------------------------------------------- */
 
     public function testDiscoverFallsToPsr18Discovery(): void
     {
@@ -148,9 +150,9 @@ final class HttpClientFactoryTest extends TestCase
         self::assertInstanceOf(ClientInterface::class, $client);
     }
 
-    // ---------------------------------------------------------------
-    // discover() – no client available
-    // ---------------------------------------------------------------
+     /* ---------------------------------------------------------------
+         discover() – no client available
+     --------------------------------------------------------------- */
 
     public function testDiscoverThrowsWhenNoClientAvailable(): void
     {
@@ -172,9 +174,9 @@ final class HttpClientFactoryTest extends TestCase
         $factory->discover();
     }
 
-    // ---------------------------------------------------------------
-    // createGuzzle() – happy path
-    // ---------------------------------------------------------------
+     /* ---------------------------------------------------------------
+         createGuzzle() – happy path
+     --------------------------------------------------------------- */
 
     public function testCreateGuzzleReturnsClient(): void
     {
@@ -232,9 +234,9 @@ final class HttpClientFactoryTest extends TestCase
         );
     }
 
-    // ---------------------------------------------------------------
-    // createGuzzle() – throw path
-    // ---------------------------------------------------------------
+     /* ---------------------------------------------------------------
+         createGuzzle() – throw path
+     --------------------------------------------------------------- */
 
     public function testCreateGuzzleThrowsWhenNotInstalled(): void
     {
@@ -246,9 +248,9 @@ final class HttpClientFactoryTest extends TestCase
         $factory->createGuzzle($this->config);
     }
 
-    // ---------------------------------------------------------------
-    // createSymfony() – happy path
-    // ---------------------------------------------------------------
+     /* ---------------------------------------------------------------
+         createSymfony() – happy path
+     --------------------------------------------------------------- */
 
     public function testCreateSymfonyReturnsClientWhenAvailable(): void
     {
@@ -265,9 +267,9 @@ final class HttpClientFactoryTest extends TestCase
         }
     }
 
-    // ---------------------------------------------------------------
-    // createSymfony() – throw path
-    // ---------------------------------------------------------------
+     /* ---------------------------------------------------------------
+         createSymfony() – throw path
+     --------------------------------------------------------------- */
 
     public function testCreateSymfonyThrowsWhenNotInstalled(): void
     {
@@ -279,9 +281,9 @@ final class HttpClientFactoryTest extends TestCase
         $factory->createSymfony($this->config);
     }
 
-    // ---------------------------------------------------------------
-    // createCurl() – happy path
-    // ---------------------------------------------------------------
+     /* ---------------------------------------------------------------
+         createCurl() – happy path
+     --------------------------------------------------------------- */
 
     public function testCreateCurlReturnsClientWhenAvailable(): void
     {
@@ -298,9 +300,9 @@ final class HttpClientFactoryTest extends TestCase
         }
     }
 
-    // ---------------------------------------------------------------
-    // createCurl() – throw path
-    // ---------------------------------------------------------------
+     /* ---------------------------------------------------------------
+         createCurl() – throw path
+     --------------------------------------------------------------- */
 
     public function testCreateCurlThrowsWhenNotInstalled(): void
     {
@@ -312,9 +314,9 @@ final class HttpClientFactoryTest extends TestCase
         $factory->createCurl($this->config);
     }
 
-    // ---------------------------------------------------------------
-    // Constructor – default resolver
-    // ---------------------------------------------------------------
+     /* ---------------------------------------------------------------
+         Constructor – default resolver
+     --------------------------------------------------------------- */
 
     public function testDefaultConstructorUsesRealClassExists(): void
     {
@@ -330,9 +332,9 @@ final class HttpClientFactoryTest extends TestCase
         self::assertInstanceOf(\GuzzleHttp\Client::class, $factory->createGuzzle($this->config));
     }
 
-    // ---------------------------------------------------------------
-    // Statelessness / multiple calls
-    // ---------------------------------------------------------------
+     /* ---------------------------------------------------------------
+         Statelessness / multiple calls
+     --------------------------------------------------------------- */
 
     public function testMultipleDiscoverCallsReturnNewInstances(): void
     {
@@ -349,9 +351,9 @@ final class HttpClientFactoryTest extends TestCase
         self::assertSame($mock, HttpClientFactory::create($this->config, $mock));
     }
 
-    // ---------------------------------------------------------------
-    // Discovery order verification
-    // ---------------------------------------------------------------
+     /* ---------------------------------------------------------------
+         Discovery order verification
+     --------------------------------------------------------------- */
 
     public function testDiscoveryOrderGuzzleBeforeSymfony(): void
     {
@@ -381,7 +383,7 @@ final class HttpClientFactoryTest extends TestCase
         try {
             $factory->discover();
         } catch (\Error) {
-            // Instantiation may fail since Symfony isn't actually installed
+            /* Instantiation may fail since Symfony isn't actually installed */
         }
 
         self::assertSame([
@@ -403,7 +405,7 @@ final class HttpClientFactoryTest extends TestCase
         try {
             $factory->discover();
         } catch (\Error) {
-            // Instantiation may fail since Curl isn't actually installed
+            /* Instantiation may fail since Curl isn't actually installed */
         }
 
         self::assertSame([
@@ -449,9 +451,9 @@ final class HttpClientFactoryTest extends TestCase
         $factory->discover();
     }
 
-    // ---------------------------------------------------------------
-    // Configuration integration
-    // ---------------------------------------------------------------
+     /* ---------------------------------------------------------------
+         Configuration integration
+     --------------------------------------------------------------- */
 
     public function testCreateGuzzleWithRetrySettings(): void
     {
