@@ -547,13 +547,13 @@ Extended features for v0.2+.
 - [x] Create `src/Infrastructure/Http/Middleware/LoggingMiddleware.php` (PSR-3 logging)
 
 **Error Adapter**
-- [ ] Create `src/Infrastructure/Http/ErrorAdapter.php` (Adapter pattern)
-  - [ ] Normalize `errorMessage` format (balance, statements, status)
-  - [ ] Normalize `errorResponse` format (inter-account, EFT)
-  - [ ] Normalize `ErrorMessage` format (register URL, notifications)
-  - [ ] Normalize card error responses
-  - [ ] Map error codes to exception types via `ApiErrorMapping`
-  - [ ] Support JSON and XML error parsing
+- [x] Create `src/Infrastructure/Http/ErrorAdapter.php` (Adapter pattern)
+  - [x] Normalize `errorMessage` format (balance, statements, status)
+  - [x] Normalize `errorResponse` format (inter-account, EFT)
+  - [x] Normalize `ErrorMessage` format (register URL, notifications)
+  - [x] Normalize card error responses
+  - [x] Map error codes to exception types via `ApiErrorMapping`
+  - [x] Support JSON and XML error parsing
 
 **HTTP Client**
 - [ ] Create `src/Infrastructure/Http/HttpClient.php` (request builder)
