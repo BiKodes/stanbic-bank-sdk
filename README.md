@@ -556,8 +556,8 @@ Extended features for v0.2+.
   - [x] Support JSON and XML error parsing
 
 **HTTP Client**
-- [ ] Create `src/Infrastructure/Http/HttpClient.php` (request builder)
-- [ ] Integrate all middleware in correct order (logging → timeout → retry → auth)
+- [x] Create `src/Infrastructure/Http/HttpClient.php` (request builder)
+- [x] Integrate all middleware in correct order (logging → timeout → retry → auth)
 - [x] Add request/response logging (via LoggingMiddleware)
 - [x] Add PSR-3 logger injection (supported by LoggingMiddleware)
 
