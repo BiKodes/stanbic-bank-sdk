@@ -6,8 +6,8 @@ namespace Stanbic\SDK\Infrastructure\Http\Middleware;
 
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Client\ClientInterface;
 use Stanbic\SDK\Infrastructure\Http\AccessToken;
+use Stanbic\SDK\Infrastructure\Http\TokenProviderInterface;
 
 /**
  * Middleware to inject a Bearer token into the Authorization header.
@@ -15,11 +15,11 @@ use Stanbic\SDK\Infrastructure\Http\AccessToken;
  */
 final class AuthMiddleware implements MiddlewareInterface
 {
-    private AccessToken $token;
+    private AccessToken|TokenProviderInterface $tokenSource;
 
-    public function __construct(AccessToken $token)
+    public function __construct(AccessToken|TokenProviderInterface $tokenSource)
     {
-        $this->token = $token;
+        $this->tokenSource = $tokenSource;
     }
 
     /**
@@ -29,7 +29,11 @@ final class AuthMiddleware implements MiddlewareInterface
      */
     public function __invoke(RequestInterface $request, callable $next): ResponseInterface
     {
-        $request = $request->withHeader('Authorization', 'Bearer ' . $this->token->token);
+        $token = $this->tokenSource instanceof AccessToken
+            ? $this->tokenSource->token
+            : $this->tokenSource->getToken();
+
+        $request = $request->withHeader('Authorization', 'Bearer ' . $token);
         return $next($request);
     }
 }
